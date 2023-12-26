@@ -66,7 +66,9 @@ namespace Mxnu.Core
 
         private void InitSpawnCarOption()
         {
-
+            var carMenuItem = new NativeItem("Spawn a car");
+            carMenuItem.Activated += SpawnCar;
+            menu.Add(carMenuItem);
         }
 
         private void InitWeatherMenu()
@@ -524,6 +526,12 @@ namespace Mxnu.Core
                 player.Money -= Convert.ToInt32(money);
             }
             GTA.UI.Notification.Show("Check your money");
+        }
+
+        private void SpawnCar(object sender, EventArgs e)
+        {
+            string input = Game.GetUserInput(WindowTitle.CustomTeamName, "", 255);
+            World.CreateVehicle(new Model(input), player.Character.GetOffsetPosition(new GTA.Math.Vector3(0, 2, 0)));
         }
     }
 }
