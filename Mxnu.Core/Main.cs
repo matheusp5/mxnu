@@ -109,6 +109,22 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.MaxSpeed = maxSpeed;
             };
             vehicleMenu.Add(setMaxSpeed);
+
+            var setVehicleTorqueMultiplier = new NativeItem("Vehicle Torque Multiplier");
+            setVehicleTorqueMultiplier.Activated += (object sender, EventArgs e) =>
+            {
+                float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
+                player.Character.CurrentVehicle.EngineTorqueMultiplier = multiplier;
+            };
+            vehicleMenu.Add(setVehicleTorqueMultiplier);
+
+            var setEnginePowerMultiplier = new NativeItem("Engine Power Multiplier");
+            setEnginePowerMultiplier.Activated += (object sender, EventArgs e) =>
+            {
+                float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
+                player.Character.CurrentVehicle.EnginePowerMultiplier = multiplier;
+            };
+            vehicleMenu.Add(setEnginePowerMultiplier);
         }
 
         private void InitWeaponsMenu()
