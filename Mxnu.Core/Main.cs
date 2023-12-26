@@ -107,6 +107,13 @@ namespace Mxnu.Core
 
             };
             weaponsMenu.Add(enableUnlimitedAmmo);
+
+            var enableExplosiveBullets = new NativeCheckboxItem("Explosive Bullets");
+            enableExplosiveBullets.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                explosiveBullets = enableExplosiveBullets.Checked;
+            };
+            weaponsMenu.Add(enableExplosiveBullets);
         }
 
         private void InitPlayerMenu()
