@@ -37,5 +37,12 @@ namespace Mxnu.Core
         public bool superJumpEnable { get; set; } = false;
         public bool alwaysClean { get; set; } = false;
         public NativeListItem<int> customHourItem { get; set; }
+
+        public Main()
+        {
+            Init();
+        }
+
+        private void Init() {}
     }
 }
