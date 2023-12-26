@@ -77,6 +77,34 @@ namespace Mxnu.Core
             };
             weatherMenu.Add(setHourItem);
             customHourItem = setHourItem;
+
+            var timeOptions = new string[] { "Midnight", "Morning", "Noon", "Afternoon", "Evening", "Night" };
+            var setDayTimeItem = new NativeListItem<string>("Set Time", timeOptions);
+            setDayTimeItem.ItemChanged += (object sender, ItemChangedEventArgs<string> e) =>
+            {
+                switch (setDayTimeItem.SelectedItem)
+                {
+                    case "Midnight":
+                        World.CurrentTimeOfDay = new TimeSpan(0, 0, 0);
+                        break;
+                    case "Morning":
+                        World.CurrentTimeOfDay = new TimeSpan(6, 0, 0);
+                        break;
+                    case "Noon":
+                        World.CurrentTimeOfDay = new TimeSpan(12, 0, 0);
+                        break;
+                    case "Afternoon":
+                        World.CurrentTimeOfDay = new TimeSpan(15, 0, 0);
+                        break;
+                    case "Evening":
+                        World.CurrentTimeOfDay = new TimeSpan(18, 0, 0);
+                        break;
+                    case "Night":
+                        World.CurrentTimeOfDay = new TimeSpan(21, 0, 0);
+                        break;
+                }
+            };
+            weatherMenu.Add(setDayTimeItem);
         }
 
         private void InitMoneyMenu()
