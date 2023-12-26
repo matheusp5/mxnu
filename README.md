@@ -2,6 +2,13 @@
 
 Mxnu is a project started in 2023 with EDUCATIONAL interests, without the intention of harming another player's experience. Mxnu was developed with C# on the .NET Framework platform. It was made to run in story mode only (SUBJECT TO BAN IF USED IN ONLINE MODE). It is a simple mod, perfect for running on weak PCs, it provides some essential options that you can use to improve the gameplay experience.
 
+## Dependencies
+Please, install these dependencies before install de Mxnu.
+
+- Script Hook V
+- Script Hook V DotNet 3
+- LemonUI
+
 ## How to Install
 
 ### Manual installation for users
