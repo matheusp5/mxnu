@@ -114,6 +114,14 @@ namespace Mxnu.Core
                 explosiveBullets = enableExplosiveBullets.Checked;
             };
             weaponsMenu.Add(enableExplosiveBullets);
+
+            var enableFireBullets = new NativeCheckboxItem("Fire Bullets");
+            enableFireBullets.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                fireBullets = enableFireBullets.Checked;
+            };
+            weaponsMenu.Add(enableFireBullets);
+
         }
 
         private void InitPlayerMenu()
