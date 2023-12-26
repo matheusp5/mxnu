@@ -12,30 +12,29 @@ namespace Mxnu.Core
     public class Main : Script
     {
         private Player player { get; set; } = Game.Player;
-        public ObjectPool pool { get; set; }
-        public NativeMenu menu { get; set; }
-        public NativeMenu moneyMenu { get; set; }
-        public NativeMenu playerMenu { get; set; }
-        public NativeMenu weaponsMenu { get; set; }
-        public NativeMenu vehicleMenu { get; set; }
-        public NativeMenu weatherMenu { get; set; }
-        public NativeListItem<int> runSpeedItem { get; set; }
-        public NativeListItem<int> swimSpeedItem { get; set; }
-        public WeaponHash[] weapons { get; set; } = Weapon.GetAllWeaponHashesForHumanPeds();
-        public bool explosiveBullets { get; set; } = false;
-        public bool fireBullets { get; set; } = false;
-        public bool multiplierEnabled { get; set; } = false;
-        public float runSpeedMultipler { get; set; } = 1;
-        public float swimSpeedMultipler { get; set; } = 1;
-        public bool noClipEnable { get; set; } = false;
-        public int noClipSpeed { get; set; } = 2;
-        public float noClipedX { get; set; }
-        public float noClipedY { get; set; }
-        public float noClipedZ { get; set; }
-        public bool ignoredByPoliceEnable { get; set; } = false;
-        public bool superJumpEnable { get; set; } = false;
-        public bool alwaysClean { get; set; } = false;
-        public NativeListItem<int> customHourItem { get; set; }
+        private ObjectPool pool { get; set; }
+        private NativeMenu menu { get; set; }
+        private NativeMenu moneyMenu { get; set; }
+        private NativeMenu playerMenu { get; set; }
+        private NativeMenu weaponsMenu { get; set; }
+        private NativeMenu vehicleMenu { get; set; }
+        private NativeMenu weatherMenu { get; set; }
+        private NativeListItem<int> runSpeedItem { get; set; }
+        private NativeListItem<int> swimSpeedItem { get; set; }
+        private WeaponHash[] weapons { get; set; } = Weapon.GetAllWeaponHashesForHumanPeds();
+        private bool explosiveBullets { get; set; } = false;
+        private bool fireBullets { get; set; } = false;
+        private bool multiplierEnabled { get; set; } = false;
+        private float runSpeedMultipler { get; set; } = 1;
+        private float swimSpeedMultipler { get; set; } = 1;
+        private bool noClipEnable { get; set; } = false;
+        private int noClipSpeed { get; set; } = 2;
+        private float noClipedX { get; set; }
+        private float noClipedY { get; set; }
+        private float noClipedZ { get; set; }
+        private bool ignoredByPoliceEnable { get; set; } = false;
+        private bool superJumpEnable { get; set; } = false;
+        private bool alwaysClean { get; set; } = false;
 
         public Main()
         {
@@ -134,7 +133,6 @@ namespace Mxnu.Core
                 World.CurrentTimeOfDay = new TimeSpan(setHourItem.SelectedItem, 0, 0);
             };
             weatherMenu.Add(setHourItem);
-            customHourItem = setHourItem;
 
             var timeOptions = new string[] { "Midnight", "Morning", "Noon", "Afternoon", "Evening", "Night" };
             var setDayTimeItem = new NativeListItem<string>("Set Time", timeOptions);
