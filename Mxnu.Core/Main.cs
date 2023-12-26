@@ -69,6 +69,15 @@ namespace Mxnu.Core
 
             var vehicleMenu = new NativeMenu("Vehicle");
             this.vehicleMenu = vehicleMenu;
+
+            var enableInvencibleVehicle = new NativeCheckboxItem("Invencible vehicle");
+            enableInvencibleVehicle.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                player.Character.CurrentVehicle.CanBeVisiblyDamaged = !enableInvencibleVehicle.Checked;
+                player.Character.CurrentVehicle.CanEngineDegrade = !enableInvencibleVehicle.Checked;
+                player.Character.CurrentVehicle.CanTiresBurst = !enableInvencibleVehicle.Checked;
+            };
+            vehicleMenu.Add(enableInvencibleVehicle);
         }
 
         private void InitWeaponsMenu()
