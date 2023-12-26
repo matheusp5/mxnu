@@ -68,6 +68,25 @@ namespace Mxnu.Core
 
         private void ConfigureMenuStyles()
         {
+            weaponsMenu.BannerText.Font = GTA.UI.Font.Pricedown;
+            weaponsMenu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            weaponsMenu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
+
+            weatherMenu.BannerText.Font = GTA.UI.Font.Pricedown;
+            weatherMenu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            weatherMenu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
+
+            playerMenu.BannerText.Font = GTA.UI.Font.Pricedown;
+            playerMenu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            playerMenu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
+
+            vehicleMenu.BannerText.Font = GTA.UI.Font.Pricedown;
+            vehicleMenu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            vehicleMenu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
+
+            moneyMenu.BannerText.Font = GTA.UI.Font.Pricedown;
+            moneyMenu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            moneyMenu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
         }
 
         private void InitSpawnCarOption()
