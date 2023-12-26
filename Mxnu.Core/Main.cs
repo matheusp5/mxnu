@@ -29,7 +29,7 @@ namespace Mxnu.Core
         private float runSpeedMultipler { get; set; } = 1;
         private float swimSpeedMultipler { get; set; } = 1;
         private bool noClipEnable { get; set; } = false;
-        private int noClipSpeed { get; set; } = 2;
+        private int noClipSpeed { get; set; } = 5;
         private float noClipedX { get; set; }
         private float noClipedY { get; set; }
         private float noClipedZ { get; set; }
