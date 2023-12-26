@@ -59,8 +59,14 @@ namespace Mxnu.Core
             InitVehicleMenu();
             InitMoneyMenu();
             InitWeatherMenu();
+            InitSpawnCarOption();
 
             pool.Add(menu);
+        }
+
+        private void InitSpawnCarOption()
+        {
+
         }
 
         private void InitWeatherMenu()
