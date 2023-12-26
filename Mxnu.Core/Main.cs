@@ -122,6 +122,16 @@ namespace Mxnu.Core
             };
             weaponsMenu.Add(enableFireBullets);
 
+            this.weaponsMenu = weaponsMenu;
+            pool.Add(weaponsMenu);
+
+            weaponsItemMenu.Activated += (object sender, EventArgs e) =>
+            {
+                menu.Visible = false;
+                this.weaponsMenu.Visible = true;
+            };
+            menu.Add(weaponsItemMenu);
+
         }
 
         private void InitPlayerMenu()
