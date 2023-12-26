@@ -113,6 +113,15 @@ namespace Mxnu.Core
                 Function.Call(Hash.SET_WEATHER_TYPE_NOW, setWeatherItem.SelectedItem);
             };
             weatherMenu.Add(setWeatherItem);
+
+            weatherItemMenu.Activated += (object sender, EventArgs e) =>
+            {
+                menu.Visible = false;
+                this.weatherMenu.Visible = true;
+            };
+
+            pool.Add(weatherMenu);
+            menu.Add(weatherItemMenu);
         }
 
         private void InitMoneyMenu()
