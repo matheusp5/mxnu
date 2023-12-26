@@ -135,7 +135,7 @@ namespace Mxnu.Core
             };
             playerMenu.Add(customSwimSpeedMultiplier);
 
-            var ignoredByPolice = new NativeCheckboxItem("Ignored by Police");
+            var ignoredByPolice = new NativeCheckboxItem("Never Wanted");
             ignoredByPolice.CheckboxChanged += (object sender, EventArgs e) =>
             {
                 player.IgnoredByPolice = ignoredByPolice.Checked;
