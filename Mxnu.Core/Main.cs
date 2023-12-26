@@ -101,6 +101,14 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.DirtLevel = 0;
             };
             vehicleMenu.Add(clearVehicle);
+
+            var setMaxSpeed = new NativeItem("Change Vehicle Max Speed");
+            setMaxSpeed.Activated += (object sender, EventArgs e) =>
+            {
+                float maxSpeed = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
+                player.Character.CurrentVehicle.MaxSpeed = maxSpeed;
+            };
+            vehicleMenu.Add(setMaxSpeed);
         }
 
         private void InitWeaponsMenu()
