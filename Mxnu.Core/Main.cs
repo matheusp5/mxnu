@@ -11,6 +11,7 @@ namespace Mxnu.Core
 {
     public class Main : Script
     {
+        private const string mainMenuDescription = "Developed by Mxtheuz";
         private Player player { get; set; } = Game.Player;
         private ObjectPool pool { get; set; }
         private NativeMenu menu { get; set; }
@@ -43,7 +44,7 @@ namespace Mxnu.Core
 
         private void Init() {
             pool = new ObjectPool();
-            menu = new NativeMenu("Mxnu", "~b~ github.com/ofmxtheuuz");
+            menu = new NativeMenu("Mxnu", "~b~ " + mainMenuDescription);
 
             menu.BannerText.Font = GTA.UI.Font.Pricedown;
             menu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
@@ -267,6 +268,7 @@ namespace Mxnu.Core
             var enableInvencibleVehicle = new NativeCheckboxItem("Invencible Vehicle");
             enableInvencibleVehicle.CheckboxChanged += (object sender, EventArgs e) =>
             {
+                if(!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 player.Character.CurrentVehicle.CanBeVisiblyDamaged = !enableInvencibleVehicle.Checked;
                 player.Character.CurrentVehicle.CanEngineDegrade = !enableInvencibleVehicle.Checked;
                 player.Character.CurrentVehicle.CanTiresBurst = !enableInvencibleVehicle.Checked;
@@ -277,6 +279,7 @@ namespace Mxnu.Core
             var repairVehicle = new NativeItem("Repair");
             repairVehicle.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 player.Character.CurrentVehicle.Repair();
             };
             vehicleMenu.Add(repairVehicle);
@@ -284,6 +287,7 @@ namespace Mxnu.Core
             var enableAlwaysClean = new NativeCheckboxItem("Vehicle Always Clean");
             enableAlwaysClean.CheckboxChanged += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 alwaysClean = enableAlwaysClean.Checked;
             };
             vehicleMenu.Add(enableAlwaysClean);
@@ -292,6 +296,7 @@ namespace Mxnu.Core
             var clearVehicle = new NativeItem("Clear vehicle");
             clearVehicle.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 player.Character.CurrentVehicle.DirtLevel = 0;
             };
             vehicleMenu.Add(clearVehicle);
@@ -299,6 +304,7 @@ namespace Mxnu.Core
             var setMaxSpeed = new NativeItem("Change Vehicle Max Speed");
             setMaxSpeed.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 float maxSpeed = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
                 player.Character.CurrentVehicle.MaxSpeed = maxSpeed;
             };
@@ -307,6 +313,7 @@ namespace Mxnu.Core
             var setVehicleTorqueMultiplier = new NativeItem("Vehicle Torque Multiplier");
             setVehicleTorqueMultiplier.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
                 player.Character.CurrentVehicle.EngineTorqueMultiplier = multiplier;
             };
@@ -315,6 +322,7 @@ namespace Mxnu.Core
             var setEnginePowerMultiplier = new NativeItem("Engine Power Multiplier");
             setEnginePowerMultiplier.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
                 player.Character.CurrentVehicle.EnginePowerMultiplier = multiplier;
             };
@@ -323,6 +331,7 @@ namespace Mxnu.Core
             var setBrakesPowerMultiplier = new NativeItem("Brakes Power Multiplier");
             setBrakesPowerMultiplier.Activated += (object sender, EventArgs e) =>
             {
+                if (!player.Character.IsInVehicle()) { GTA.UI.Notification.Show("You are not in a vehicle."); return; }
                 float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
                 player.Character.CurrentVehicle.BrakePower = player.Character.CurrentVehicle.BrakePower * multiplier;
             };
