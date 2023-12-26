@@ -57,8 +57,84 @@ namespace Mxnu.Core
             InitPlayerMenu();
             InitWeaponsMenu();
             InitVehicleMenu();
+            InitMoneyMenu();
 
             pool.Add(menu);
+        }
+
+        private void InitMoneyMenu()
+        {
+            var moneyItemMenu = new NativeItem("Money Options");
+            menu.Add(moneyItemMenu);
+            moneyItemMenu.Activated += MoneyItemPressed;
+            var moneyMenu = new NativeMenu("Money");
+
+            var add1k = new NativeItem("Add 1.000");
+            add1k.Activated += (object sender, EventArgs e) =>
+            {
+                AddMoney("1000");
+            };
+            moneyMenu.Add(add1k);
+
+            var add1kk = new NativeItem("Add 1.000.000");
+            add1kk.Activated += (object sender, EventArgs e) =>
+            {
+                AddMoney("1000000");
+            };
+            moneyMenu.Add(add1kk);
+
+            var add1kkk = new NativeItem("Add 1.000.000.000");
+            add1kkk.Activated += (object sender, EventArgs e) =>
+            {
+                AddMoney("1000000000");
+            };
+            moneyMenu.Add(add1kkk);
+
+            var addCustom = new NativeItem("Add Custom");
+            addCustom.Activated += (object sender, EventArgs e) =>
+            {
+                AddMoney(null);
+            };
+            moneyMenu.Add(addCustom);
+
+
+            var diviser = new NativeItem("--------------------------");
+            moneyMenu.Add(diviser);
+
+
+            var remove1k = new NativeItem("Remove 1.000");
+            remove1k.Activated += (object sender, EventArgs e) =>
+            {
+                RemoveMoney("1000");
+            };
+            moneyMenu.Add(remove1k);
+
+
+            var remove1kk = new NativeItem("Remove 1.000.000");
+            remove1kk.Activated += (object sender, EventArgs e) =>
+            {
+                RemoveMoney("1000000");
+            };
+            moneyMenu.Add(remove1kk);
+
+
+            var remove1kkk = new NativeItem("Remove 1.000.000.000");
+            remove1kkk.Activated += (object sender, EventArgs e) =>
+            {
+                RemoveMoney("1000000000");
+            };
+            moneyMenu.Add(remove1kkk);
+
+
+            var removeCustom = new NativeItem("Remove Custom");
+            removeCustom.Activated += (object sender, EventArgs e) =>
+            {
+                RemoveMoney(null);
+            };
+            moneyMenu.Add(removeCustom);
+
+            pool.Add(moneyMenu);
+            this.moneyMenu = moneyMenu;
         }
 
         private void InitVehicleMenu()
@@ -345,6 +421,41 @@ namespace Mxnu.Core
             this.playerMenu = playerMenu;
             pool.Add(playerMenu);
 
+        }
+
+        private void MoneyItemPressed(object sender, EventArgs e)
+        {
+            menu.Visible = false;
+            moneyMenu.Visible = true;
+        }
+
+        private void AddMoney(string money)
+        {
+            if (money == null)
+            {
+                string input = Game.GetUserInput(WindowTitle.CustomTeamName, "", 9);
+                player.Money += Convert.ToInt32(input);
+            }
+            else
+            {
+                player.Money += Convert.ToInt32(money);
+            }
+
+            GTA.UI.Notification.Show("Check your money");
+        }
+
+        private void RemoveMoney(string money)
+        {
+            if (money == null)
+            {
+                string input = Game.GetUserInput(WindowTitle.CustomTeamName, "", 9);
+                player.Money -= Convert.ToInt32(input);
+            }
+            else
+            {
+                player.Money -= Convert.ToInt32(money);
+            }
+            GTA.UI.Notification.Show("Check your money");
         }
     }
 }
