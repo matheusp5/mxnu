@@ -60,6 +60,7 @@ namespace Mxnu.Core
             InitMoneyMenu();
             InitWeatherMenu();
             InitSpawnCarOption();
+            InitTeleportToWaypointOption();
 
             pool.Add(menu);
         }
@@ -69,6 +70,10 @@ namespace Mxnu.Core
             var carMenuItem = new NativeItem("Spawn a car");
             carMenuItem.Activated += SpawnCar;
             menu.Add(carMenuItem);
+        }        
+        
+        private void InitTeleportToWaypointOption()
+        {
         }
 
         private void InitWeatherMenu()
