@@ -56,8 +56,14 @@ namespace Mxnu.Core
 
             InitPlayerMenu();
             InitWeaponsMenu();
+            InitVehicleMenu();
 
             pool.Add(menu);
+        }
+
+        private void InitVehicleMenu()
+        {
+
         }
 
         private void InitWeaponsMenu()
