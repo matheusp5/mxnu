@@ -61,8 +61,13 @@ namespace Mxnu.Core
             InitWeatherMenu();
             InitSpawnCarOption();
             InitTeleportToWaypointOption();
+            ConfigureMenuStyles();
 
             pool.Add(menu);
+        }
+
+        private void ConfigureMenuStyles()
+        {
         }
 
         private void InitSpawnCarOption()
