@@ -75,6 +75,13 @@ namespace Mxnu.Core
                 }
             };
             weaponsMenu.Add(getAllWeapons);
+
+            var removeAllWeapons = new NativeItem("Remove all weapons");
+            removeAllWeapons.Activated += (object sender, EventArgs e) =>
+            {
+                player.Character.Weapons.RemoveAll();
+            };
+            weaponsMenu.Add(removeAllWeapons);
         }
 
         private void InitPlayerMenu()
