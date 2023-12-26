@@ -69,6 +69,14 @@ namespace Mxnu.Core
 
             var weatherMenu = new NativeMenu("Weather");
             this.weatherMenu = weatherMenu;
+
+            var setHourItem = new NativeListItem<int>("Set Hour", Enumerable.Range(1, 24).ToArray());
+            setHourItem.ItemChanged += (object sender, ItemChangedEventArgs<int> e) =>
+            {
+                World.CurrentTimeOfDay = new TimeSpan(setHourItem.SelectedItem, 0, 0);
+            };
+            weatherMenu.Add(setHourItem);
+            customHourItem = setHourItem;
         }
 
         private void InitMoneyMenu()
