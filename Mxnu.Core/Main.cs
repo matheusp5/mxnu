@@ -63,6 +63,8 @@ namespace Mxnu.Core
             InitTeleportToWaypointOption();
             ConfigureMenuStyles();
 
+            GTA.UI.Notification.Show("Mxnu loaded!");
+
             pool.Add(menu);
         }
 
