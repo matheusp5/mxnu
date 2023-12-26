@@ -1,0 +1,10 @@
+D:\Programação\.NET\Mxnu\Mxnu.Core\bin\Debug\Mxnu.Core.dll
+D:\Programação\.NET\Mxnu\Mxnu.Core\bin\Debug\Mxnu.Core.pdb
+D:\Programação\.NET\Mxnu\Mxnu.Core\bin\Debug\LemonUI.SHVDN3.dll
+D:\Programação\.NET\Mxnu\Mxnu.Core\bin\Debug\ScriptHookVDotNet3.dll
+D:\Programação\.NET\Mxnu\Mxnu.Core\bin\Debug\ScriptHookVDotNet3.xml
+D:\Programação\.NET\Mxnu\Mxnu.Core\obj\Debug\Mxnu.Core.csproj.AssemblyReference.cache
+D:\Programação\.NET\Mxnu\Mxnu.Core\obj\Debug\Mxnu.Core.csproj.CoreCompileInputs.cache
+D:\Programação\.NET\Mxnu\Mxnu.Core\obj\Debug\Mxnu.Core.csproj.CopyComplete
+D:\Programação\.NET\Mxnu\Mxnu.Core\obj\Debug\Mxnu.Core.dll
+D:\Programação\.NET\Mxnu\Mxnu.Core\obj\Debug\Mxnu.Core.pdb
