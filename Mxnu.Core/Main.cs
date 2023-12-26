@@ -56,5 +56,13 @@ namespace Mxnu.Core
 
             pool.Add(menu);
         }
+
+        private void InitPlayerMenu()
+        {
+            var playerMenuItem = new NativeItem("Player Options");
+            menu.Add(playerMenuItem);
+
+            var playerMenu = new NativeMenu("Player");
+        }
     }
 }
