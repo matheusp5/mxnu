@@ -59,6 +59,12 @@ namespace Mxnu.Core
 
         private void InitPlayerMenu()
         {
+            int[] tenItemsList = new int[10];
+            for (int i = 1; i <= 10; i++)
+            {
+                tenItemsList[i - 1] = i * 10;
+            }
+
             var playerMenuItem = new NativeItem("Player Options");
             menu.Add(playerMenuItem);
 
@@ -86,6 +92,49 @@ namespace Mxnu.Core
                 }
             };
             playerMenu.Add(playerGodmode);
+
+            var multiplierEnable = new NativeCheckboxItem("Enable Multiplier");
+            multiplierEnable.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                multiplierEnabled = multiplierEnable.Checked;
+                if (!multiplierEnable.Checked)
+                {
+                    runSpeedItem.SelectedIndex = 0;
+                    swimSpeedItem.SelectedIndex = 0;
+                }
+            };
+            playerMenu.Add(multiplierEnable);
+
+            var runSpeedMultiplier = new NativeListItem<int>("Run Speed Multiplier", tenItemsList);
+            runSpeedMultiplier.ItemChanged += (object sender, ItemChangedEventArgs<int> e) =>
+            {
+                runSpeedMultipler = runSpeedMultiplier.SelectedItem;
+            };
+            runSpeedItem = runSpeedMultiplier;
+            playerMenu.Add(runSpeedMultiplier);
+
+            var customRunSpeedMultiplier = new NativeItem("Custom Run Speed Multiplier");
+            customRunSpeedMultiplier.Activated += (object sender, EventArgs e) =>
+            {
+                runSpeedMultipler = float.Parse(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 5));
+            };
+            playerMenu.Add(customRunSpeedMultiplier);
+
+            var swimSpeedMultiplier = new NativeListItem<int>("Swim Speed Multiplier", tenItemsList);
+            swimSpeedMultiplier.ItemChanged += (object sender, ItemChangedEventArgs<int> e) =>
+            {
+                swimSpeedMultipler = swimSpeedMultiplier.SelectedItem;
+            };
+            swimSpeedItem = swimSpeedMultiplier;
+            playerMenu.Add(swimSpeedMultiplier);
+
+            var customSwimSpeedMultiplier = new NativeItem("Custom Swim Speed Multiplier");
+            customSwimSpeedMultiplier.Activated += (object sender, EventArgs e) =>
+            {
+                swimSpeedMultipler = float.Parse(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 5));
+            };
+            playerMenu.Add(customSwimSpeedMultiplier);
+
         }
     }
 }
