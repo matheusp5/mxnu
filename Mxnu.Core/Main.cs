@@ -54,7 +54,15 @@ namespace Mxnu.Core
             menu.NameFont = GTA.UI.Font.Monospace;
             menu.DescriptionFont = GTA.UI.Font.Monospace;
 
+            InitPlayerMenu();
+            InitWeaponsMenu();
+
             pool.Add(menu);
+        }
+
+        private void InitWeaponsMenu()
+        {
+
         }
 
         private void InitPlayerMenu()
