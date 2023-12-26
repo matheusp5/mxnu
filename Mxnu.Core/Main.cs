@@ -78,6 +78,14 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.CanTiresBurst = !enableInvencibleVehicle.Checked;
             };
             vehicleMenu.Add(enableInvencibleVehicle);
+
+
+            var repairVehicle = new NativeItem("Repair");
+            repairVehicle.Activated += (object sender, EventArgs e) =>
+            {
+                player.Character.CurrentVehicle.Repair();
+            };
+            vehicleMenu.Add(repairVehicle);
         }
 
         private void InitWeaponsMenu()
