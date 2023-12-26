@@ -174,6 +174,16 @@ namespace Mxnu.Core
             };
             playerMenu.Add(enableNoClip);
 
+            var enableSuperJump = new NativeCheckboxItem("Super Jump");
+            enableSuperJump.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                superJumpEnable = enableSuperJump.Checked;
+            };
+            playerMenu.Add(enableSuperJump);
+
+            this.playerMenu = playerMenu;
+            pool.Add(playerMenu);
+
         }
     }
 }
