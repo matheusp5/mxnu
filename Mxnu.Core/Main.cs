@@ -143,6 +143,13 @@ namespace Mxnu.Core
             };
             playerMenu.Add(ignoredByPolice);
 
+            var setWantedLevel = new NativeListItem<int>("Wanted Level", new int[] { 0, 1, 2, 3, 4, 5 });
+            setWantedLevel.ItemChanged += (object sender, ItemChangedEventArgs<int> e) =>
+            {
+                player.WantedLevel = setWantedLevel.SelectedItem;
+            };
+            playerMenu.Add(setWantedLevel);
+
         }
     }
 }
