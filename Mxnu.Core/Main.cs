@@ -63,6 +63,29 @@ namespace Mxnu.Core
             menu.Add(playerMenuItem);
 
             var playerMenu = new NativeMenu("Player");
+
+            playerMenuItem.Activated += (object sender, EventArgs e) =>
+            {
+                menu.Visible = false;
+                playerMenu.Visible = true;
+            };
+
+            var playerGodmode = new NativeCheckboxItem("Godmode");
+            playerGodmode.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                if (playerGodmode.Checked)
+                {
+                    player.IsInvincible = true;
+                    player.Character.IsInvincible = true;
+                    player.Character.Health = 100;
+                }
+                else
+                {
+                    player.IsInvincible = false;
+                    player.Character.IsInvincible = false;
+                }
+            };
+            playerMenu.Add(playerGodmode);
         }
     }
 }
