@@ -64,6 +64,11 @@ namespace Mxnu.Core
         private void InitVehicleMenu()
         {
 
+            var vehicleItemMenu = new NativeItem("Vehicle Options");
+
+
+            var vehicleMenu = new NativeMenu("Vehicle");
+            this.vehicleMenu = vehicleMenu;
         }
 
         private void InitWeaponsMenu()
