@@ -150,6 +150,30 @@ namespace Mxnu.Core
             };
             playerMenu.Add(setWantedLevel);
 
+            var enableNoClip = new NativeCheckboxItem("No Clip");
+            enableNoClip.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                noClipEnable = enableNoClip.Checked;
+                player.Character.HasGravity = true;
+                if (enableNoClip.Checked)
+                {
+                    noClipedX = player.Character.Position.X;
+                    noClipedY = player.Character.Position.Y;
+                    noClipedY = player.Character.Position.Z;
+
+
+                    player.Character.IsVisible = false;
+                    player.Character.IsInvincible = true;
+
+                }
+                else
+                {
+                    player.Character.IsVisible = true;
+                    player.Character.IsInvincible = false;
+                }
+            };
+            playerMenu.Add(enableNoClip);
+
         }
     }
 }
