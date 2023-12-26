@@ -65,6 +65,16 @@ namespace Mxnu.Core
             var weaponsItemMenu = new NativeItem("Weapons Options");
 
             var weaponsMenu = new NativeMenu("Weapons");
+
+            var getAllWeapons = new NativeItem("Get all weapons");
+            getAllWeapons.Activated += (object sender, EventArgs e) =>
+            {
+                foreach (WeaponHash hash in weapons)
+                {
+                    player.Character.Weapons.Give(hash, 999, false, true);
+                }
+            };
+            weaponsMenu.Add(getAllWeapons);
         }
 
         private void InitPlayerMenu()
