@@ -105,6 +105,14 @@ namespace Mxnu.Core
                 }
             };
             weatherMenu.Add(setDayTimeItem);
+
+            var weatherOptions = new string[] { "Extra Sunny", "Clear", "Clouds", "Smog", "Foggy", "Overcast", "Rain", "Thunderstorm", "Clearing", "Neutral", "Snow", "Blizzard", "Snowlight", "Christmas" };
+            var setWeatherItem = new NativeListItem<string>("Set Weather", weatherOptions);
+            setWeatherItem.ItemChanged += (object sender, ItemChangedEventArgs<string> e) =>
+            {
+                Function.Call(Hash.SET_WEATHER_TYPE_NOW, setWeatherItem.SelectedItem);
+            };
+            weatherMenu.Add(setWeatherItem);
         }
 
         private void InitMoneyMenu()
