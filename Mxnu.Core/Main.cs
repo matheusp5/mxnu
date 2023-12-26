@@ -125,6 +125,14 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.EnginePowerMultiplier = multiplier;
             };
             vehicleMenu.Add(setEnginePowerMultiplier);
+
+            var setBrakesPowerMultiplier = new NativeItem("Brakes Power Multiplier");
+            setBrakesPowerMultiplier.Activated += (object sender, EventArgs e) =>
+            {
+                float multiplier = Convert.ToInt32(Game.GetUserInput(WindowTitle.EnterCustomTeamName, null, 9));
+                player.Character.CurrentVehicle.BrakePower = player.Character.CurrentVehicle.BrakePower * multiplier;
+            };
+            vehicleMenu.Add(setBrakesPowerMultiplier);
         }
 
         private void InitWeaponsMenu()
