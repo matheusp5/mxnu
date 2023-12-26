@@ -63,6 +63,10 @@ namespace Mxnu.Core
             InitTeleportToWaypointOption();
             ConfigureMenuStyles();
 
+            Tick += TickHandler;
+            KeyDown += KeyDownHandler;
+            KeyUp += KeyUpHandler;
+
             GTA.UI.Notification.Show("Mxnu loaded!");
 
             pool.Add(menu);
@@ -580,5 +584,134 @@ namespace Mxnu.Core
             string input = Game.GetUserInput(WindowTitle.CustomTeamName, "", 255);
             World.CreateVehicle(new Model(input), player.Character.GetOffsetPosition(new GTA.Math.Vector3(0, 2, 0)));
         }
+
+        private void KeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (noClipEnable)
+            {
+                Vector3 forwardVector = GameplayCamera.Direction;
+
+                switch (e.KeyCode)
+                {
+
+                    case Keys.W:
+                        noClipedX += noClipSpeed * forwardVector.X;
+                        noClipedY += noClipSpeed * forwardVector.Y;
+                        noClipedZ += noClipSpeed * forwardVector.Z;
+                        break;
+
+                    case Keys.S:
+                        noClipedX -= noClipSpeed * forwardVector.X;
+                        noClipedY -= noClipSpeed * forwardVector.Y;
+                        break;
+
+                    case Keys.A:
+                        Vector3 leftVector = new Vector3(-forwardVector.Y, forwardVector.X, 0);
+                        leftVector.Normalize();
+                        noClipedX += noClipSpeed * leftVector.X;
+                        noClipedY += noClipSpeed * leftVector.Y;
+                        break;
+
+                    case Keys.D:
+                        Vector3 rightVector = new Vector3(forwardVector.Y, -forwardVector.X, 0);
+                        rightVector.Normalize();
+                        noClipedX += noClipSpeed * rightVector.X;
+                        noClipedY += noClipSpeed * rightVector.Y;
+                        break;
+                }
+            }
+        }
+
+
+        private void KeyUpHandler(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F3:
+                    menu.Visible = !menu.Visible;
+                    playerMenu.Visible = false;
+                    moneyMenu.Visible = false;
+                    weaponsMenu.Visible = false;
+                    weatherMenu.Visible = false;
+                    break;
+
+                case Keys.Back:
+                    if (menu.Visible && !moneyMenu.Visible && !playerMenu.Visible && !weaponsMenu.Visible && !weatherMenu.Visible)
+                    {
+                        menu.Visible = false;
+                    }
+                    else if (!menu.Visible && moneyMenu.Visible && !moneyMenu.Visible && !weaponsMenu.Visible && !weatherMenu.Visible)
+                    {
+                        menu.Visible = true;
+                        moneyMenu.Visible = false;
+                    }
+                    else if (!menu.Visible && !moneyMenu.Visible && !weaponsMenu.Visible && moneyMenu.Visible && !weatherMenu.Visible)
+                    {
+                        menu.Visible = true;
+                        playerMenu.Visible = false;
+                    }
+                    else if (!menu.Visible && !moneyMenu.Visible && weaponsMenu.Visible && !moneyMenu.Visible && !weatherMenu.Visible)
+                    {
+                        menu.Visible = true;
+                        weaponsMenu.Visible = false;
+                    }
+                    else if (!menu.Visible && !moneyMenu.Visible && !weaponsMenu.Visible && !moneyMenu.Visible && weatherMenu.Visible)
+                    {
+                        menu.Visible = true;
+                        weatherMenu.Visible = false;
+                    }
+                    break;
+            }
+
+        }
+
+        private void TickHandler(object sender, EventArgs e)
+        {
+            pool.Process();
+            swimSpeedItem.Enabled = multiplierEnabled;
+            runSpeedItem.Enabled = multiplierEnabled;
+            if (superJumpEnable)
+            {
+                player.SetSuperJumpThisFrame();
+            }
+            if (alwaysClean)
+            {
+                player.Character.CurrentVehicle.DirtLevel = 0;
+            }
+            if (ignoredByPoliceEnable)
+            {
+                player.WantedLevel = 0;
+            }
+            if (noClipEnable)
+            {
+                player.SetRunSpeedMultThisFrame(60000);
+                player.SetSwimSpeedMultThisFrame(60000);
+                player.Character.Position = new Vector3(noClipedX, noClipedY, noClipedZ);
+            }
+            else
+            {
+                if (multiplierEnabled)
+                {
+                    player.SetRunSpeedMultThisFrame(runSpeedMultipler);
+                    player.SetSwimSpeedMultThisFrame(swimSpeedMultipler);
+                }
+                else
+                {
+                    player.SetRunSpeedMultThisFrame(1);
+                    player.SetSwimSpeedMultThisFrame(1);
+                }
+            }
+            if (explosiveBullets)
+            {
+                player.SetExplosiveAmmoThisFrame();
+                player.SetExplosiveMeleeThisFrame();
+            }
+            if (fireBullets)
+            {
+                player.SetFireAmmoThisFrame();
+
+            }
+        }
+
     }
 }
