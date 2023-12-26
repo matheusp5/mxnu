@@ -43,6 +43,18 @@ namespace Mxnu.Core
             Init();
         }
 
-        private void Init() {}
+        private void Init() {
+            pool = new ObjectPool();
+            menu = new NativeMenu("Mxnu", "~b~ Developed by Mxtheuz", "~p~ github.com/ofmxtheuuz");
+
+            menu.BannerText.Font = GTA.UI.Font.Pricedown;
+            menu.BannerText.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            menu.Banner.Color = System.Drawing.Color.FromArgb(128, 0, 128);
+
+            menu.NameFont = GTA.UI.Font.Monospace;
+            menu.DescriptionFont = GTA.UI.Font.Monospace;
+
+            pool.Add(menu);
+        }
     }
 }
