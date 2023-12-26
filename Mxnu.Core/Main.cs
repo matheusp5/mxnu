@@ -86,6 +86,13 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.Repair();
             };
             vehicleMenu.Add(repairVehicle);
+
+            var enableAlwaysClean = new NativeCheckboxItem("Vehicle always clean");
+            enableAlwaysClean.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                alwaysClean = enableAlwaysClean.Checked;
+            };
+            vehicleMenu.Add(enableAlwaysClean);
         }
 
         private void InitWeaponsMenu()
