@@ -70,7 +70,7 @@ namespace Mxnu.Core
             var vehicleMenu = new NativeMenu("Vehicle");
             this.vehicleMenu = vehicleMenu;
 
-            var enableInvencibleVehicle = new NativeCheckboxItem("Invencible vehicle");
+            var enableInvencibleVehicle = new NativeCheckboxItem("Invencible Vehicle");
             enableInvencibleVehicle.CheckboxChanged += (object sender, EventArgs e) =>
             {
                 player.Character.CurrentVehicle.CanBeVisiblyDamaged = !enableInvencibleVehicle.Checked;
@@ -87,7 +87,7 @@ namespace Mxnu.Core
             };
             vehicleMenu.Add(repairVehicle);
 
-            var enableAlwaysClean = new NativeCheckboxItem("Vehicle always clean");
+            var enableAlwaysClean = new NativeCheckboxItem("Vehicle Always Clean");
             enableAlwaysClean.CheckboxChanged += (object sender, EventArgs e) =>
             {
                 alwaysClean = enableAlwaysClean.Checked;
