@@ -133,6 +133,15 @@ namespace Mxnu.Core
                 player.Character.CurrentVehicle.BrakePower = player.Character.CurrentVehicle.BrakePower * multiplier;
             };
             vehicleMenu.Add(setBrakesPowerMultiplier);
+
+            vehicleItemMenu.Activated += (object sender, EventArgs e) =>
+            {
+                menu.Visible = false;
+                this.vehicleMenu.Visible = true;
+            };
+
+            pool.Add(vehicleMenu);
+            menu.Add(vehicleItemMenu);
         }
 
         private void InitWeaponsMenu()
