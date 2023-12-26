@@ -74,6 +74,22 @@ namespace Mxnu.Core
         
         private void InitTeleportToWaypointOption()
         {
+            var teleportToWaypoint = new NativeItem("Teleport to Waypoint");
+            teleportToWaypoint.Activated += (object sender, EventArgs e) =>
+            {
+                Vector3 waypointPosition = Function.Call<Vector3>(Hash.GET_BLIP_COORDS, Function.Call<int>(Hash.GET_FIRST_BLIP_INFO_ID, 8));
+
+                if (waypointPosition != Vector3.Zero)
+                {
+                    player.Character.Position = waypointPosition;
+                    GTA.UI.Notification.Show("Teleported to waypoint!");
+                }
+                else
+                {
+                    GTA.UI.Notification.Show("Waypoint not set!");
+                }
+            };
+            menu.Add(teleportToWaypoint);
         }
 
         private void InitWeatherMenu()
