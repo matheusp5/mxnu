@@ -58,8 +58,17 @@ namespace Mxnu.Core
             InitWeaponsMenu();
             InitVehicleMenu();
             InitMoneyMenu();
+            InitWeatherMenu();
 
             pool.Add(menu);
+        }
+
+        private void InitWeatherMenu()
+        {
+            var weatherItemMenu = new NativeItem("Weather Options");
+
+            var weatherMenu = new NativeMenu("Weather");
+            this.weatherMenu = weatherMenu;
         }
 
         private void InitMoneyMenu()
