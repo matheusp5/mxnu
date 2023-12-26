@@ -62,7 +62,9 @@ namespace Mxnu.Core
 
         private void InitWeaponsMenu()
         {
+            var weaponsItemMenu = new NativeItem("Weapons Options");
 
+            var weaponsMenu = new NativeMenu("Weapons");
         }
 
         private void InitPlayerMenu()
