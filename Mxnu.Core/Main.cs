@@ -82,6 +82,31 @@ namespace Mxnu.Core
                 player.Character.Weapons.RemoveAll();
             };
             weaponsMenu.Add(removeAllWeapons);
+
+
+            var enableUnlimitedAmmo = new NativeCheckboxItem("Unlimited ammo");
+            enableUnlimitedAmmo.CheckboxChanged += (object sender, EventArgs e) =>
+            {
+                if (enableUnlimitedAmmo.Checked)
+                {
+                    foreach (WeaponHash hash in weapons)
+                    {
+                        var weapon = player.Character.Weapons.Give(hash, 999, true, true);
+                        weapon.InfiniteAmmo = true;
+                        weapon.InfiniteAmmoClip = true;
+                    }
+                }
+                else
+                {
+                    player.Character.Weapons.RemoveAll();
+                    foreach (WeaponHash hash in weapons)
+                    {
+                        player.Character.Weapons.Give(hash, 999, false, true);
+                    }
+                }
+
+            };
+            weaponsMenu.Add(enableUnlimitedAmmo);
         }
 
         private void InitPlayerMenu()
