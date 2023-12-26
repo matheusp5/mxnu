@@ -93,6 +93,14 @@ namespace Mxnu.Core
                 alwaysClean = enableAlwaysClean.Checked;
             };
             vehicleMenu.Add(enableAlwaysClean);
+
+
+            var clearVehicle = new NativeItem("Clear vehicle");
+            clearVehicle.Activated += (object sender, EventArgs e) =>
+            {
+                player.Character.CurrentVehicle.DirtLevel = 0;
+            };
+            vehicleMenu.Add(clearVehicle);
         }
 
         private void InitWeaponsMenu()
